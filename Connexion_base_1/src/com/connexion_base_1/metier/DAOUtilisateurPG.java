@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author 8510502w
  *
  */
-public class DAOUtilisateurPG extends DAOPhpMyAdmin implements DAOUtilisateur {
+public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
 
 	/* (non-Javadoc)
 	 * @see com.connexion_base_1.metier.DAOUtilisateur#get(int)
