@@ -14,12 +14,11 @@ public class Utilisateur {
 	private String _pseudo;
 	private String _mdp;
 	
-	//private ArrayList<Utilisateur> listuser = new ArrayList<Utilisateur>();
+	
 	/**
 	 * 
 	 */
-	public Utilisateur() {
-		// TODO Auto-generated constructor stub
+	public Utilisateur() {		
 	}
 
 	/**

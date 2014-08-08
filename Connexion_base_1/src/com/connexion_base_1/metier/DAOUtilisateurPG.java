@@ -64,6 +64,7 @@ public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		close(connection);
 		return listuser;
 	}

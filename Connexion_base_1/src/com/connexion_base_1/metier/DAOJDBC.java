@@ -5,9 +5,7 @@ package com.connexion_base_1.metier;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * @author 8510502w
@@ -20,15 +18,12 @@ public class DAOJDBC {
 	private String _url = "jdbc:mysql://127.0.0.1/" + _bd;
 	private String _login = "root";
 	private String _mdp = "";
-	private Connection connexion;
-	
-	
+	private Connection connexion;	
 	
 	/**
 	 * 
 	 */
-	public DAOJDBC() {
-		
+	public DAOJDBC() {		
 		super();
 	}
 
