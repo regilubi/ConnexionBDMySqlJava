@@ -28,6 +28,7 @@ public class DAOJDBC {
 	 * 
 	 */
 	public DAOJDBC() {
+		
 		super();
 	}
 
@@ -38,28 +39,8 @@ public class DAOJDBC {
 			//...charger le driver mysql
 			Class.forName(_driver);
 			//...creer la connexion
-			connexion = DriverManager.getConnection(_url,_login,_mdp);
+			connexion = DriverManager.getConnection(_url,_login,_mdp);			
 			
-			
-			/**
-			//3...creer la requette
-			Statement instruction = connexion.createStatement();
-			//...executer la requette
-			ResultSet resultat = instruction.executeQuery("select * from utilisateur");
-			//...parcour des résultats stoquer dans "resultat"
-			while(resultat.next()){
-
-				
-				System.out.println("---------------------------");
-				System.out.println("N° ID : "+resultat.getInt(1));
-				System.out.println("NOM : "+resultat.getString(2));
-				System.out.println("PSEUDO : "+resultat.getString(3));
-				System.out.println("MDP: "+resultat.getString(4));
-
-			}
-			//...fermer la connexion
-			connexion.close();
-			*/
 		}
 		catch (Exception e){
 
