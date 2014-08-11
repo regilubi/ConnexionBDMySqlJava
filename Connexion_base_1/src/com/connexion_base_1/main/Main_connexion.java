@@ -9,6 +9,7 @@ package com.connexion_base_1.main;
 import java.sql.*;
 import java.util.ArrayList;
 
+import com.connexion_base_1.metier.DAOUtilisateur;
 import com.connexion_base_1.metier.DAOUtilisateurPG;
 import com.connexion_base_1.metier.Utilisateur;
 
@@ -16,6 +17,7 @@ import com.connexion_base_1.metier.Utilisateur;
  * @author 8510502w
  *
  */
+@SuppressWarnings("unused")
 public class Main_connexion {
 
 	/**
@@ -28,7 +30,7 @@ public class Main_connexion {
 	
 	
 	public static void essai1(){
-		DAOUtilisateurPG dao = new DAOUtilisateurPG();
+		DAOUtilisateur dao = new DAOUtilisateurPG();
 		ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
 		list = dao.loadall();
 		for(int i = 0; i < list.size(); i++){
