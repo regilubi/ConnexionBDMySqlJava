@@ -30,9 +30,9 @@ public class Main_connexion {
 	
 	
 	public static void essai1(){
-		DAOUtilisateur dao = new DAOUtilisateurPG();
+		DAOUtilisateur daoutilisateur = new DAOUtilisateurPG();
 		ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
-		list = dao.loadall();
+		list = daoutilisateur.loadall();
 		for(int i = 0; i < list.size(); i++){
 			System.out.println(list.get(i).toString());
 		}
