@@ -123,7 +123,7 @@ public class Swing1 extends JFrame {
 	  
 	    //creation composant pour panel bas	    	    
 	    this.panel_bas = new JPanel();
-	    this.statuslabel = new JLabel("status");
+	    this.statuslabel = new JLabel("status logiciel");
 	    
 	    this.panel_bas.add(this.statuslabel);
 	    this.panel_bas.setBackground(Color.WHITE);
