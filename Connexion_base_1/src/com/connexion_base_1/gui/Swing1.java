@@ -5,8 +5,6 @@ package com.connexion_base_1.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-
 import java.awt.*;
 import java.awt.event.*;
 
