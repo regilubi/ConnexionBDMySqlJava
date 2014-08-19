@@ -25,19 +25,32 @@ public class Main_connexion {
 	 */
 	public static void main(String[] args) {
 		
-			essai1();		
+		//trouvertouslesuser();	
+		trouverunuserparid();
 	}
 	
 	
-	public static void essai1(){
+	public static void trouvertouslesuser(){
+		System.out.println("----Méthode pour trouver tous les utilisateurs ----");
 		DAOUtilisateur daoutilisateur = new DAOUtilisateurPG();
 		ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
 		list = daoutilisateur.loadall();
 		for(int i = 0; i < list.size(); i++){
 			System.out.println(list.get(i).toString());
-		}
-		
+		}		
+	}
+	
+	public static void trouverunuserparid(){
+		System.out.println("----Méthode pour trouver un user par son id ----");
+		int id = 4;
+		DAOUtilisateur utilisateur = new DAOUtilisateurPG();
+		//utilisateur.get(id);
+		System.out.println(utilisateur.get(id));
+	}
+	
+	public static void suppressionuser(){
+		System.out.println("----Méthode pour supprimer un utilisateur ----");
 		
 	}
 
-}
+}//fin de la classe main

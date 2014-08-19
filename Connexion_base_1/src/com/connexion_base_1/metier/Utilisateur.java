@@ -34,6 +34,20 @@ public class Utilisateur {
 		this._pseudo = _pseudo;
 		this._mdp = _mdp;
 	}
+	
+	
+
+	/**
+	 * @param _nom
+	 * @param _pseudo
+	 * @param _mdp
+	 */
+	public Utilisateur(String _nom, String _pseudo, String _mdp) {
+		super();
+		this._nom = _nom;
+		this._pseudo = _pseudo;
+		this._mdp = _mdp;
+	}
 
 	public int get_id() {
 		return _id;
