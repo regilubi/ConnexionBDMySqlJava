@@ -5,6 +5,7 @@ package com.connexion_base_1.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -22,28 +23,28 @@ public class Swing1 extends JFrame {
 	JTextField saisienom;
 	JButton chercherun, chercherall, ajouter, supprimer, print;
 	JTable jtable;
-	JLabel statuslabel;
+	final JLabel statuslabel;
 	
-	Object donnees [][]  = {{"ligne1-colonne1","ligne1-colonne2","ligne1-colonne3","ligne1-colonne4"},
-			{"ligne2-colonne1","ligne2-colonne2","ligne2-colonne3","ligne2-colonne4"},
-			{"ligne3-colonne1","ligne3-colonne2","ligne3-colonne3","ligne3-colonne4"},
-			{"ligne4-colonne1","ligne4-colonne2","ligne4-colonne3","ligne4-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"}};
-	String titrecolonnes []  = { "ID", "NOM", "PSEUDO", "MOT DE PASSE" };
+	Object[][] donnees = new Object[25][25]; /*  = {{"1","ligne1-colonne1","ligne1-colonne2","ligne1-colonne3","ligne1-colonne4"},
+			{"2","ligne2-colonne1","ligne2-colonne2","ligne2-colonne3","ligne2-colonne4"},
+			{"3","ligne3-colonne1","ligne3-colonne2","ligne3-colonne3","ligne3-colonne4"},
+			{"4","ligne4-colonne1","ligne4-colonne2","ligne4-colonne3","ligne4-colonne4"},
+			{"5","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"6","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"7","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"8","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"9","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"10","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"11","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"12","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"13","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"14","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"15","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"16","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"17","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"18","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
+			{"19","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"}};*/
+	String titrecolonnes []  = { "#", "ID", "NOM", "PSEUDO", "MOT DE PASSE" };
 	
 	/**
 	 * 
@@ -60,7 +61,7 @@ public class Swing1 extends JFrame {
 		//Container contenu = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		//Container contenu = new JPanel();
 		
-		
+	    remplirtableau();
 		
 		/**
 		 * Création des composants pour le panel haut	 
@@ -70,7 +71,7 @@ public class Swing1 extends JFrame {
 		this.panel_haut.setBackground(Color.LIGHT_GRAY);		
 		JLabel L1 = new JLabel("Chercher un utilisateur :");
 		saisienom = new JTextField(20);
-		chercherun = new JButton("chercher");
+		chercherun = new JButton("Chercher");
 		chercherall = new JButton("Afficher tous les utilisateurs");
 		GridLayout grille_haut = new GridLayout(1,4);
 		grille_haut.setHgap(5); //Cinq pixels d'espace entre les colonnes (H comme Horizontal)
@@ -138,11 +139,51 @@ public class Swing1 extends JFrame {
 		 * Les écouteurs des composants "interactifs"
 		 */
 		 EcouteurBoutons actiondesbutoons = new EcouteurBoutons();
-		 chercherun.addActionListener(actiondesbutoons);
-		 chercherall.addActionListener(actiondesbutoons);
-		 ajouter.addActionListener(actiondesbutoons);
-		 supprimer.addActionListener(actiondesbutoons);
-		 print.addActionListener(actiondesbutoons);
+		 //chercherun.addActionListener(actiondesbutoons);
+		 //chercherall.addActionListener(actiondesbutoons);
+		 //ajouter.addActionListener(actiondesbutoons);
+		 //supprimer.addActionListener(actiondesbutoons);
+		 //print.addActionListener(actiondesbutoons);
+		 this.supprimer.addActionListener(new ActionListener() {				
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton	B = (JButton)(e.getSource());				
+				System.out.println("You have pressed button: " + B.getText()); 
+				statuslabel.setText("You have pressed button: " + B.getText());					
+			}
+		 });
+		 this.ajouter.addActionListener(new ActionListener() {				
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton	B = (JButton)(e.getSource());				
+				System.out.println("You have pressed button: " + B.getText()); 
+				statuslabel.setText("You have pressed button: " + B.getText());					
+			}
+		 });
+		 this.chercherall.addActionListener(new ActionListener() {				
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton	B = (JButton)(e.getSource());				
+				System.out.println("You have pressed button: " + B.getText()); 
+				statuslabel.setText("You have pressed button: " + B.getText());					
+			}
+		});
+		 this.chercherun.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton	B = (JButton)(e.getSource());				
+				System.out.println("You have pressed button: " + B.getText()); 
+				statuslabel.setText("You have pressed button: " + B.getText());				
+			}
+		});
+		 this.print.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JButton	B = (JButton)(e.getSource());				
+				System.out.println("You have pressed button: " + B.getText()); 
+				statuslabel.setText("You have pressed button: " + B.getText());
+			}
+		});	 
 		 
 		 
 		 //EcouteurTexte ET = new EcouteurTexte();
@@ -150,6 +191,21 @@ public class Swing1 extends JFrame {
 		 
 		 this.addWindowListener(new EcouteurFenetre());
 		 
+	}
+	
+	public void remplirtableau(){
+		int maxligne = 20;
+		int maxcolonne = 4;
+		for(int i = 0; i <= maxligne; i++){
+			for(int j = 0; j <= maxcolonne; j++){
+				this.donnees[i][j-j] = i; //remplissage de la colonne # par le nombre de lignes
+				this.donnees[i][j+1] = "data";
+			}
+		}
+	}
+	
+	public void setlabelstatus(String msg){
+		this.statuslabel.setText(msg);
 	}
 }//fin de la classe
 
@@ -162,16 +218,16 @@ class EcouteurBoutons implements ActionListener
 	{
 		JButton	B = (JButton)(e.getSource());
 		
-		if (B.getText().equals("chercher"))
-			System.out.println("click button pour afficher un utilisateur.");
+		if (B.getText().equals("Chercher"))
+			System.out.println("You have pressed button: " + B.getText()); 
 		else if (B.getText().equals("Afficher tous les utilisateurs"))
-			System.out.println("Click button pour afficher touts les utilisateurs.");
+			System.out.println("You have pressed button: " + B.getText());
 		else if (B.getText().equals("Ajouter"))
-			System.out.println("Click button pour ajouter un utilisateur.");
+			System.out.println("You have pressed button: " + B.getText());
 		else if (B.getText().equals("Supprimer"))
-			System.out.println("Click button pour supprimer un utilisateur.");
+			System.out.println("You have pressed button: " + B.getText());
 		else if (B.getText().equals("Print"))
-			System.out.println("Click button pour imprimer le tableau.");
+			System.out.println("You have pressed button: " + B.getText());
 		else
 			System.out.println("rien à afficher!");
 	}
