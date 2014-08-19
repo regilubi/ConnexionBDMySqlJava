@@ -17,13 +17,19 @@ import javax.swing.*;
  */
 public class Swing1 extends JFrame {
 	
-	JPanel panel_haut;
-	JPanel panel_centre;
-	JPanel panel_bas;
-	JTextField saisienom;
-	JButton chercherun, chercherall, ajouter, supprimer, print;
-	JTable jtable;
+	final JPanel panel_haut;
+	final JPanel panel_centre;
+	final JPanel panel_bas;
+	final JTextField saisienom;
+	final JButton chercherun, chercherall, ajouter, supprimer, print;
+	final JTable jtable;
 	final JLabel statuslabel;
+	
+	private JMenuBar menubar = new JMenuBar();
+	private JMenu fichier = new JMenu("Fichier");
+	private JMenuItem quitter = new JMenuItem("Quitter");
+	private JMenu apropos = new JMenu("A propos");	
+	private JMenuItem aide = new JMenuItem("?");
 	
 	Object[][] donnees = new Object[25][25]; /*  = {{"1","ligne1-colonne1","ligne1-colonne2","ligne1-colonne3","ligne1-colonne4"},
 			{"2","ligne2-colonne1","ligne2-colonne2","ligne2-colonne3","ligne2-colonne4"},
@@ -62,6 +68,22 @@ public class Swing1 extends JFrame {
 		//Container contenu = new JPanel();
 		
 	    remplirtableau();
+	    
+	    //arrangement du menu
+	    this.fichier.add(quitter);
+	    this.quitter.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);				
+			}
+		});	   
+	    
+	    this.apropos.add(aide);
+	    
+	    this.menubar.add(fichier);
+	    this.menubar.add(apropos);
+	    //ajout du menubar dans la fenetre
+	    this.setJMenuBar(menubar);
 		
 		/**
 		 * Création des composants pour le panel haut	 
@@ -138,7 +160,7 @@ public class Swing1 extends JFrame {
 		/**
 		 * Les écouteurs des composants "interactifs"
 		 */
-		 EcouteurBoutons actiondesbutoons = new EcouteurBoutons();
+		 //EcouteurBoutons actiondesbutoons = new EcouteurBoutons();
 		 //chercherun.addActionListener(actiondesbutoons);
 		 //chercherall.addActionListener(actiondesbutoons);
 		 //ajouter.addActionListener(actiondesbutoons);
@@ -169,11 +191,18 @@ public class Swing1 extends JFrame {
 			}
 		});
 		 this.chercherun.addActionListener(new ActionListener() {			
+			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JButton	B = (JButton)(e.getSource());				
-				System.out.println("You have pressed button: " + B.getText()); 
-				statuslabel.setText("You have pressed button: " + B.getText());				
+				JButton	B = (JButton)(e.getSource());	
+				if(saisienom.getText().equalsIgnoreCase("")){
+					JOptionPane aver1 = new JOptionPane();
+					aver1.showMessageDialog(null, "Veuillez renseigner un nom ou un pseudo pour la recherche", "avertissement", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else{
+					System.out.println("You have pressed button : " + B.getText() + " found the user : " + saisienom.getText()); 
+					statuslabel.setText("You have pressed button : " + B.getText()+ " found the user : " + saisienom.getText());	
+				}							
 			}
 		});
 		 this.print.addActionListener(new ActionListener() {			
@@ -204,9 +233,7 @@ public class Swing1 extends JFrame {
 		}
 	}
 	
-	public void setlabelstatus(String msg){
-		this.statuslabel.setText(msg);
-	}
+	
 }//fin de la classe
 
 /**
