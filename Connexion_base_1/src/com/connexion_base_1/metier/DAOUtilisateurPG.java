@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import com.mysql.jdbc.PreparedStatement;
 
 /**
- * @author 8510502w
+ * @author Réginald LUBIN
  *
  */
 public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
@@ -21,6 +21,7 @@ public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
 	private static final String SQL_GET = "select * from utilisateur where id=?";
 	private static final String SQL_SAVE = "insert into utilisateur(nom,pseudo,mdp) values (?,?,?)";
 	private static final String SQL_DELETE = "delete from utilisateur where id=?";
+	private static final String SQL_UPDATE_MDP = "update utilisateur set mdp=? where id=?";
 	private ArrayList<Utilisateur> listuser = new ArrayList<Utilisateur>();
 	
 	
@@ -101,7 +102,27 @@ public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
 	 */
 	@Override
 	public void save(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
+		Connection connection = connect();
+		try {
+			PreparedStatement req_save = (PreparedStatement) connection.prepareStatement(SQL_SAVE);
+			
+			req_save.setString(1, utilisateur.get_nom());
+			req_save.setString(2, utilisateur.get_pseudo());
+			req_save.setString(3, utilisateur.get_mdp());
+			int n = req_save.executeUpdate();
+			
+			if(n != 1){
+				System.out.println("Erreur dans l'insertion de l'utilisateur " + utilisateur);
+			}
+			else
+				System.out.println("Insertion de l'utilisateur " + utilisateur);
+			req_save.close();
+			close(connection);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -119,25 +140,25 @@ public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
 				req.setInt(1, utilisateur.get_id());
 				int n = req.executeUpdate();
 				
-				if(n==1)
-					utilisateur.set_id(-1);
-				else
-					throw new Exception("Erreur dans la supression de l'utilisateur " + utilisateur);
+				if(n==1){
+					utilisateur.set_id(-1); 
+					System.out.println("Supression de l'utilisateur " + utilisateur);
+				}
+				else{
+					//throw new Exception("Erreur dans la supression de l'utilisateur " + utilisateur);
+					System.out.println("Erreur dans la supression de l'utilisateur " + utilisateur);
+				}
 				
 				req.close();
 				close(connection);
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else
-			try {
-				throw new Exception ("L'utilisateur " + utilisateur + " n'est pas persistant");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+		} else{
+			//throw new Exception ("L'utilisateur " + utilisateur + " n'est pas persistant");
+			System.out.println("L'utilisateur " + utilisateur + " n'est pas persistant");
+			} 
 	}
 
 	/* (non-Javadoc)

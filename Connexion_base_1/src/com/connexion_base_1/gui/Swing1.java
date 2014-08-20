@@ -62,7 +62,7 @@ public class Swing1 extends JFrame {
 		/**
 		 * Paramétrage de la fenêtre elle-même
 		 */
-		super("Utilisateurs dans une base");
+		super("Gestion des utilisateurs");
 		setSize(1000,600); // (largeur, hauteur)
 		//Container contenu = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		//Container contenu = new JPanel();

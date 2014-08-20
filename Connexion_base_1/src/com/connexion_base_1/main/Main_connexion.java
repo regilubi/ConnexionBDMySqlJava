@@ -26,7 +26,9 @@ public class Main_connexion {
 	public static void main(String[] args) {
 		
 		//trouvertouslesuser();	
-		trouverunuserparid();
+		//trouverunuserparid();
+		suppressionuser();
+		//saveuser();
 	}
 	
 	
@@ -50,7 +52,16 @@ public class Main_connexion {
 	
 	public static void suppressionuser(){
 		System.out.println("----Méthode pour supprimer un utilisateur ----");
-		
+		DAOUtilisateur utilisateur = new DAOUtilisateurPG();
+		Utilisateur user = new Utilisateur(8, "toto","toto","toto");
+		utilisateur.delete(user);
+	}
+	
+	public static void saveuser(){
+		System.out.println("----Méthode pour enregistrer un utilisateur ----");
+		DAOUtilisateur utilisateur = new DAOUtilisateurPG();
+		Utilisateur user = new Utilisateur("miler","miler","miler");
+		utilisateur.save(user);
 	}
 
 }//fin de la classe main
