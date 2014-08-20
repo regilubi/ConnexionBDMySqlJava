@@ -184,8 +184,8 @@ public class Swing1 extends JFrame {
 				
 				//appel de la boite de dialog pour enregistrer un nouveau utilisateur
 				DialogNouveauUtilisateur dialog = new DialogNouveauUtilisateur(null, "Nouveau utilisateur", true);
-				//Utilisateur utilisateur = dialog.showDialog();
-				if(dialog.getutilisateur().get_nom()== " "){
+				//Utilisateur utilisateur = dialog.showDialog();				
+				if(dialog.getutilisateur().get_nom() == null){
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,"Veuillez remplir touts les champs!", "Erreur",JOptionPane.ERROR_MESSAGE);
 				}else{

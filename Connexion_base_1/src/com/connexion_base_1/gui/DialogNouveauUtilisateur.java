@@ -56,24 +56,24 @@ public class DialogNouveauUtilisateur extends JDialog {
 		b1.add(textintro);
 		
 		Box b2 = Box.createHorizontalBox();
-		textnom = new JLabel("Nom");
+		textnom = new JLabel("Nom :");
 		fieldnom = new JTextField(10);
 		b2.add(textnom);
-		b2.add(new JLabel(" "));
+		b2.add(new JLabel("  "));
 		b2.add(fieldnom);
 		
 		Box b3 = Box.createHorizontalBox();
-		textpseudo = new JLabel("Pseudo");
+		textpseudo = new JLabel("Pseudo :");
 		fieldpseudo = new JTextField(10);
 		b3.add(textpseudo);
-		b3.add(new JLabel(" "));
+		b3.add(new JLabel("  "));
 		b3.add(fieldpseudo);
 		
 		Box b4 = Box.createHorizontalBox();
-		textmdp = new JLabel("Mdp");
+		textmdp = new JLabel("Mdp :");
 		fieldmdp = new JTextField(10);
 		b4.add(textmdp);
-		b4.add(new JLabel(" "));
+		b4.add(new JLabel("  "));
 		b4.add(fieldmdp);
 		
 		Box n = Box.createHorizontalBox();
@@ -82,8 +82,11 @@ public class DialogNouveauUtilisateur extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {	
+				
+				JOptionPane op = new JOptionPane();
+				op.showMessageDialog(null, "rien");
 				utilisateur = new Utilisateur(fieldnom.getText(),fieldpseudo.getText(),fieldmdp.getText());
-				setVisible(false);																
+				//setVisible(false);																
 			}
 		});
 		
