@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import com.connexion_base_1.metier.DAOUtilisateur;
-import com.connexion_base_1.metier.DAOUtilisateurPG;
+import com.connexion_base_1.metier.DAOUtilisateurJDBC;
 import com.connexion_base_1.metier.Utilisateur;
 
 /**
@@ -34,7 +34,7 @@ public class Main_connexion {
 	
 	public static void trouvertouslesuser(){
 		System.out.println("----Méthode pour trouver tous les utilisateurs ----");
-		DAOUtilisateur daoutilisateur = new DAOUtilisateurPG();
+		DAOUtilisateur daoutilisateur = new DAOUtilisateurJDBC();
 		ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
 		list = daoutilisateur.loadall();
 		for(int i = 0; i < list.size(); i++){
@@ -45,21 +45,21 @@ public class Main_connexion {
 	public static void trouverunuserparid(){
 		System.out.println("----Méthode pour trouver un user par son id ----");
 		int id = 4;
-		DAOUtilisateur utilisateur = new DAOUtilisateurPG();
+		DAOUtilisateur utilisateur = new DAOUtilisateurJDBC();
 		//utilisateur.get(id);
 		System.out.println(utilisateur.get(id));
 	}
 	
 	public static void suppressionuser(){
 		System.out.println("----Méthode pour supprimer un utilisateur ----");
-		DAOUtilisateur utilisateur = new DAOUtilisateurPG();
+		DAOUtilisateur utilisateur = new DAOUtilisateurJDBC();
 		Utilisateur user = new Utilisateur(8, "toto","toto","toto");
 		utilisateur.delete(user);
 	}
 	
 	public static void saveuser(){
 		System.out.println("----Méthode pour enregistrer un utilisateur ----");
-		DAOUtilisateur utilisateur = new DAOUtilisateurPG();
+		DAOUtilisateur utilisateur = new DAOUtilisateurJDBC();
 		Utilisateur user = new Utilisateur("miler","miler","miler");
 		utilisateur.save(user);
 	}

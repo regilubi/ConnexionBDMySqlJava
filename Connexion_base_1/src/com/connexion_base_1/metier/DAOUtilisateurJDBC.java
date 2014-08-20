@@ -15,7 +15,7 @@ import com.mysql.jdbc.PreparedStatement;
  * @author Réginald LUBIN
  *
  */
-public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
+public class DAOUtilisateurJDBC extends DAOJDBC implements DAOUtilisateur {
 
 	private static final String SQL_LOAD_ALL = "select * from utilisateur";
 	private static final String SQL_GET = "select * from utilisateur where id=?";
@@ -29,7 +29,7 @@ public class DAOUtilisateurPG extends DAOJDBC implements DAOUtilisateur {
 	/**
 	 * 
 	 */
-	public DAOUtilisateurPG() {
+	public DAOUtilisateurJDBC() {
 		super();		
 	}
 
