@@ -27,8 +27,8 @@ public class Main_connexion {
 		
 		//trouvertouslesuser();	
 		//trouverunuserparid();
-		suppressionuser();
-		//saveuser();
+		//suppressionuser();
+		saveuser();
 	}
 	
 	
@@ -60,7 +60,7 @@ public class Main_connexion {
 	public static void saveuser(){
 		System.out.println("----Méthode pour enregistrer un utilisateur ----");
 		DAOUtilisateur utilisateur = new DAOUtilisateurJDBC();
-		Utilisateur user = new Utilisateur("miler","miler","miler");
+		Utilisateur user = new Utilisateur("milou","milou","milou");
 		utilisateur.save(user);
 	}
 
