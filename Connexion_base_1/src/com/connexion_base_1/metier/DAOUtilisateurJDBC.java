@@ -56,8 +56,7 @@ public class DAOUtilisateurJDBC extends DAOJDBC implements DAOUtilisateur {
 			res.close();
 			req.close();
 			close(connection);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {		
 			e.printStackTrace();
 		}
 		
@@ -88,8 +87,7 @@ public class DAOUtilisateurJDBC extends DAOJDBC implements DAOUtilisateur {
 				*/
 				this.listuser.add(new Utilisateur(resultat.getInt(1),resultat.getString(2),resultat.getString(3),resultat.getString(4)));
 				}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {			
 			e.printStackTrace();
 		}
 		
@@ -119,8 +117,7 @@ public class DAOUtilisateurJDBC extends DAOJDBC implements DAOUtilisateur {
 			req_save.close();
 			close(connection);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {			
 			e.printStackTrace();
 		}
 
@@ -151,8 +148,7 @@ public class DAOUtilisateurJDBC extends DAOJDBC implements DAOUtilisateur {
 				
 				req.close();
 				close(connection);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} catch (SQLException e) {				
 				e.printStackTrace();
 			}
 		} else{
@@ -170,4 +166,4 @@ public class DAOUtilisateurJDBC extends DAOJDBC implements DAOUtilisateur {
 
 	}
 
-}
+}//fin de la classe

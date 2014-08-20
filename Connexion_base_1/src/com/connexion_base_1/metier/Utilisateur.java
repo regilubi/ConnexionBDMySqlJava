@@ -83,8 +83,7 @@ public class Utilisateur {
 
 	@Override
 	public String toString() {
-		return "Utilisateur [_id=" + _id + ", _nom=" + _nom + ", _pseudo="
-				+ _pseudo + ", _mdp=" + _mdp + "]";
+		return "Utilisateur : \n _nom = " + _nom  + "\n_pseudo = " + _pseudo + "\n _mdp = " + _mdp;
 	}
 	
 	
