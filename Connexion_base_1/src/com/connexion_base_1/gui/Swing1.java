@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import com.connexion_base_1.metier.DAOUtilisateur;
+import com.connexion_base_1.metier.DAOUtilisateurJDBC;
 import com.connexion_base_1.metier.Utilisateur;
 
 /**
@@ -37,25 +39,7 @@ public class Swing1 extends JFrame {
 	ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
 	
 	
-	Object[][] donnees = new Object[25][25]; /*  = {{"1","ligne1-colonne1","ligne1-colonne2","ligne1-colonne3","ligne1-colonne4"},
-			{"2","ligne2-colonne1","ligne2-colonne2","ligne2-colonne3","ligne2-colonne4"},
-			{"3","ligne3-colonne1","ligne3-colonne2","ligne3-colonne3","ligne3-colonne4"},
-			{"4","ligne4-colonne1","ligne4-colonne2","ligne4-colonne3","ligne4-colonne4"},
-			{"5","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"6","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"7","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"8","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"9","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"10","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"11","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"12","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"13","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"14","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"15","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"16","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"17","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"18","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"},
-			{"19","ligne5-colonne1","ligne5-colonne2","ligne5-colonne3","ligne5-colonne4"}};*/
+	Object[][] donnees = new Object[25][25]; /*  = {{"1","ligne1-colonne1","ligne1-colonne2","ligne1-colonne3","ligne1-colonne4"}};*/
 	String titrecolonnes []  = { "#", "ID", "NOM", "PSEUDO", "MOT DE PASSE" };
 	
 	/**
@@ -183,9 +167,10 @@ public class Swing1 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JButton	B = (JButton)(e.getSource());	
 				//supprimeruser(2);
-				//TODO
-				JOptionPane aver1 = new JOptionPane();
-				aver1.showMessageDialog(null, "L'action sur ce button marche pas encore", "avertissement", JOptionPane.INFORMATION_MESSAGE);
+				
+				DialogDeleteUtilisateur dialogdelete = new DialogDeleteUtilisateur(null, "Supprimer un utilisateur", true);
+				Utilisateur utilisateur = dialogdelete.showDialog();
+				
 				System.out.println("You have pressed button: " + B.getText()); 
 				statuslabel.setText("You have pressed button: " + B.getText());					
 			}
@@ -254,11 +239,15 @@ public class Swing1 extends JFrame {
 	
 	public void remplirtableau(){
 		//remplisage du tableau
+		/*
 		list.add(new Utilisateur(0,"roro","rorolo","rororo"));
 		list.add(new Utilisateur(2,"ririli","ririvan","riri"));
 		list.add(new Utilisateur(3,"tatito","tatival","tati"));
 		list.add(new Utilisateur(4,"tata","tatare","tatatot"));
-		
+		*/
+		DAOUtilisateur daoutilisateur = new DAOUtilisateurJDBC();		
+		list = daoutilisateur.loadall();
+				
 		
 		int maxcolonne = 4;
 		for(int i = 0; i < list.size(); i++){
