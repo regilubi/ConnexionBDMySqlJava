@@ -241,14 +241,14 @@ public class Swing1 extends JFrame {
 	
 	public void remplirtableau(){
 		//remplisage du tableau
-		/*
+		
 		list.add(new Utilisateur(0,"roro","rorolo","rororo"));
 		list.add(new Utilisateur(2,"ririli","ririvan","riri"));
 		list.add(new Utilisateur(3,"tatito","tatival","tati"));
 		list.add(new Utilisateur(4,"tata","tatare","tatatot"));
-		*/
-		DAOUtilisateur daoutilisateur = new DAOUtilisateurJDBC();		
-		list = daoutilisateur.loadall();
+		
+		//DAOUtilisateur daoutilisateur = new DAOUtilisateurJDBC();		
+		//list = daoutilisateur.loadall();
 				
 		
 		int maxcolonne = 4;
