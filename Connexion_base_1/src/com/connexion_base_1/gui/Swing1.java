@@ -5,6 +5,7 @@ package com.connexion_base_1.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -61,6 +62,7 @@ public class Swing1 extends JFrame {
 	    
 	    //arrangement du menu
 	    this.fichier.add(quitter);
+	    quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,KeyEvent.CTRL_MASK));
 	    this.quitter.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
