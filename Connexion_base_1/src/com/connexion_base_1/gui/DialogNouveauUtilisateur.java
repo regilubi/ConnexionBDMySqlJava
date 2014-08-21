@@ -80,7 +80,7 @@ public class DialogNouveauUtilisateur extends JDialog {
 		b4.add(fieldmdp);
 		
 		Box n = Box.createHorizontalBox();
-		JButton okBouton = new JButton("OK");
+		JButton okBouton = new JButton("Ajouter");
 		okBouton.addActionListener(new ActionListener() {
 			
 			
