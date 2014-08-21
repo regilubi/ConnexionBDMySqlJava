@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -32,6 +33,9 @@ public class Swing1 extends JFrame {
 	private JMenuItem quitter = new JMenuItem("Quitter");
 	private JMenu apropos = new JMenu("A propos");	
 	private JMenuItem aide = new JMenuItem("?");
+	
+	ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
+	
 	
 	Object[][] donnees = new Object[25][25]; /*  = {{"1","ligne1-colonne1","ligne1-colonne2","ligne1-colonne3","ligne1-colonne4"},
 			{"2","ligne2-colonne1","ligne2-colonne2","ligne2-colonne3","ligne2-colonne4"},
@@ -81,7 +85,16 @@ public class Swing1 extends JFrame {
 		});	   
 	    
 	    this.apropos.add(aide);
-	    
+	    this.aide.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				JOptionPane aver1 = new JOptionPane();
+				aver1.showMessageDialog(null, "L'action sur ce button marche pas encore", "avertissement", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		});
 	    this.menubar.add(fichier);
 	    this.menubar.add(apropos);
 	    //ajout du menubar dans la fenetre
@@ -153,10 +166,7 @@ public class Swing1 extends JFrame {
 	    this.panel_bas.setLayout(new FlowLayout(FlowLayout.LEFT));
 	    this.add(this.panel_bas, BorderLayout.SOUTH);		 
 		 
-		/**
-		 * On affiche la fenêtre
-		 */
-		setVisible(true);
+		
 		
 		
 		/**
@@ -171,27 +181,24 @@ public class Swing1 extends JFrame {
 		 this.supprimer.addActionListener(new ActionListener() {				
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JButton	B = (JButton)(e.getSource());				
+				JButton	B = (JButton)(e.getSource());	
+				//supprimeruser(2);
+				//TODO
+				JOptionPane aver1 = new JOptionPane();
+				aver1.showMessageDialog(null, "L'action sur ce button marche pas encore", "avertissement", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("You have pressed button: " + B.getText()); 
 				statuslabel.setText("You have pressed button: " + B.getText());					
 			}
 		 });
 		 this.ajouter.addActionListener(new ActionListener() {				
-			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JButton	B = (JButton)(e.getSource());	
 				
 				//appel de la boite de dialog pour enregistrer un nouveau utilisateur
-				DialogNouveauUtilisateur dialog = new DialogNouveauUtilisateur(null, "Nouveau utilisateur", true);
-				//Utilisateur utilisateur = dialog.showDialog();				
-				if(dialog.getutilisateur().get_nom() == null){
-					JOptionPane op = new JOptionPane();
-					op.showMessageDialog(null,"Veuillez remplir touts les champs!", "Erreur",JOptionPane.ERROR_MESSAGE);
-				}else{
-					JOptionPane jop = new JOptionPane();
-					jop.showMessageDialog(null, dialog.getutilisateur().toString() +"\n a bien été enregistré", "Informations utilisateur",JOptionPane.INFORMATION_MESSAGE);
-				}				
+				DialogNouveauUtilisateur dialog = new DialogNouveauUtilisateur(null,"Nouveau utilisateur",true);
+				Utilisateur utilisateur = dialog.showDialog();					
+							
 				
 				System.out.println("You have pressed button: " + B.getText()); 
 				statuslabel.setText("You have pressed button: " + B.getText());					
@@ -200,7 +207,10 @@ public class Swing1 extends JFrame {
 		 this.chercherall.addActionListener(new ActionListener() {				
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JButton	B = (JButton)(e.getSource());				
+				JButton	B = (JButton)(e.getSource());	
+				//TODO
+				JOptionPane aver1 = new JOptionPane();
+				aver1.showMessageDialog(null, "L'action sur ce button marche pas encore", "avertissement", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("You have pressed button: " + B.getText()); 
 				statuslabel.setText("You have pressed button: " + B.getText());					
 			}
@@ -223,7 +233,10 @@ public class Swing1 extends JFrame {
 		 this.print.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JButton	B = (JButton)(e.getSource());				
+				JButton	B = (JButton)(e.getSource());	
+				//TODO
+				JOptionPane aver1 = new JOptionPane();
+				aver1.showMessageDialog(null, "L'action sur ce button marche pas encore", "avertissement", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("You have pressed button: " + B.getText()); 
 				statuslabel.setText("You have pressed button: " + B.getText());
 			}
@@ -234,16 +247,50 @@ public class Swing1 extends JFrame {
 		 //T1.addActionListener(ET);
 		 
 		 this.addWindowListener(new EcouteurFenetre());
-		 
+		
+		//On affiche la fenêtre	
+		setVisible(true);		 
 	}
 	
 	public void remplirtableau(){
-		int maxligne = 20;
+		//remplisage du tableau
+		list.add(new Utilisateur(0,"roro","rorolo","rororo"));
+		list.add(new Utilisateur(2,"ririli","ririvan","riri"));
+		list.add(new Utilisateur(3,"tatito","tatival","tati"));
+		list.add(new Utilisateur(4,"tata","tatare","tatatot"));
+		
+		
 		int maxcolonne = 4;
-		for(int i = 0; i <= maxligne; i++){
+		for(int i = 0; i < list.size(); i++){
 			for(int j = 0; j <= maxcolonne; j++){
 				this.donnees[i][j-j] = i; //remplissage de la colonne # par le nombre de lignes
-				this.donnees[i][j+1] = "data";
+				this.donnees[i][j+1] = list.get(i).get_id();
+				this.donnees[i][j+2] = list.get(i).get_nom();
+				this.donnees[i][j+3] = list.get(i).get_pseudo();
+				this.donnees[i][j+4] = list.get(i).get_mdp();
+				j = 4;
+			}
+		}
+	}
+	
+	public void supprimeruser(int id){
+		//remplisage du tableau
+		for(int i = 0; i < list.size(); i++){
+			if(list.get(i).equals(id)){
+				list.remove(id);
+			}
+		}
+		
+		
+		int maxcolonne = 4;
+		for(int i = 0; i < list.size(); i++){
+			for(int j = 0; j <= maxcolonne; j++){
+				this.donnees[i][j-j] = i; //remplissage de la colonne # par le nombre de lignes
+				this.donnees[i][j+1] = list.get(i).get_id();
+				this.donnees[i][j+2] = list.get(i).get_nom();
+				this.donnees[i][j+3] = list.get(i).get_pseudo();
+				this.donnees[i][j+4] = list.get(i).get_mdp();
+				j = 4;
 			}
 		}
 	}

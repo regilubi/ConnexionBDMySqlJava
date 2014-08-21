@@ -26,27 +26,30 @@ public class DialogNouveauUtilisateur extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Utilisateur utilisateur;
-	//private boolean sendData;
+	private Utilisateur utilisateur ;
+	private boolean sendData;
 	private JPanel panel;
 	private JLabel textintro, textnom, textpseudo, textmdp;
 	private JTextField fieldnom,fieldpseudo, fieldmdp;
 	
 	public DialogNouveauUtilisateur(JFrame parent, String title, boolean modal){
-		super(parent, title, modal);
+		super(parent,title,modal);
 		this.setSize(300, 250);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		this.initComponent();
-		this.setVisible(true);
+		//this.setVisible(true);
 		
 	}
 	
-	public Utilisateur getutilisateur(){
-		//this.sendData = false;
-		//this.setVisible(true);
-		return this.utilisateur;
+	public Utilisateur showDialog(){
+		this.sendData = false;
+		//début du dialog
+		this.setVisible(true);
+		//le dialog prend fin
+		//Si on a cliqué sur OK, on envoie, sinon on envoie null
+		return this.utilisateur ;
 	}
 
 	private void initComponent() {
@@ -80,23 +83,33 @@ public class DialogNouveauUtilisateur extends JDialog {
 		JButton okBouton = new JButton("OK");
 		okBouton.addActionListener(new ActionListener() {
 			
+			
+			@SuppressWarnings("static-access")
 			@Override
-			public void actionPerformed(ActionEvent arg0) {	
+			public void actionPerformed(ActionEvent arg0) {					
+				if(fieldnom.getText().length() != 0 && fieldpseudo.getText().length() != 0 && fieldmdp.getText().length() != 0){
+					utilisateur = new Utilisateur(fieldnom.getText(),fieldpseudo.getText(),fieldmdp.getText());
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, utilisateur.toString() +"\n a été enregistré", "Informations utilisateur",JOptionPane.INFORMATION_MESSAGE);
+					setVisible(false);
+				}
+				else{					
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Veuillez renseigner tous les champs !", "Erreur",JOptionPane.ERROR_MESSAGE);
+					//setVisible(false);
+				}
 				
-				JOptionPane op = new JOptionPane();
-				op.showMessageDialog(null, "rien");
-				utilisateur = new Utilisateur(fieldnom.getText(),fieldpseudo.getText(),fieldmdp.getText());
-				//setVisible(false);																
+				
+				
 			}
 		});
 		
 		JButton cancelBouton = new JButton("Annuler");
-		cancelBouton.addActionListener(new ActionListener() {
-			
+		cancelBouton.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				
+				//System.exit(0);
 			}
 		});
 		

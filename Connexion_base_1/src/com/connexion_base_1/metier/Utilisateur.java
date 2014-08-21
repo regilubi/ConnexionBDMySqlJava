@@ -9,10 +9,10 @@ package com.connexion_base_1.metier;
  */
 public class Utilisateur {
 
-	private int _id;
-	private String _nom;
-	private String _pseudo;
-	private String _mdp;
+	private int _id = -1;
+	private String _nom = null;
+	private String _pseudo = null;
+	private String _mdp = null;
 	
 	
 	/**
@@ -83,7 +83,17 @@ public class Utilisateur {
 
 	@Override
 	public String toString() {
-		return "Utilisateur : \n _nom = " + _nom  + "\n_pseudo = " + _pseudo + "\n _mdp = " + _mdp;
+		String str;
+	    if(this._nom != null && this._pseudo != null && this._mdp != null ){
+	      str = "Description de l'utilisateur : \n";
+	      str += "Nom : " + this._nom + "\n";
+	      str += "Sexe : " + this._pseudo + "\n";
+	      str += "Mdp : " + this._mdp + "\n";	  
+	    }
+	    else{
+	      str = "Aucune information !";
+	    }
+	    return str;
 	}
 	
 	
