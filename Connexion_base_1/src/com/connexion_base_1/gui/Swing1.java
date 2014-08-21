@@ -247,6 +247,8 @@ public class Swing1 extends JFrame {
 		list.add(new Utilisateur(3,"tatito","tatival","tati"));
 		list.add(new Utilisateur(4,"tata","tatare","tatatot"));
 		
+		//On peut faire appel directement au DAO pour se connecter
+		//à la base et recuperer les données.
 		//DAOUtilisateur daoutilisateur = new DAOUtilisateurJDBC();		
 		//list = daoutilisateur.loadall();
 				
